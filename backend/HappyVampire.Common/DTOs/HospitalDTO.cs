@@ -10,7 +10,7 @@ namespace HappyVampire.Common.DTOs
         public string Coordinates { get; set; }
         public string Address { get; set; }
 
-        public IEnumerable<PatientDTO> Patients { get; set; }
+        public List<PatientDTO> Patients { get; set; }
         public IEnumerable<DonationDTO> Donations { get; set; }
 
         public UserDTO User { get; set; }
