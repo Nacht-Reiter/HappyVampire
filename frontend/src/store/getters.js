@@ -1,5 +1,8 @@
 export default {
-    test(state) {
-      return state.test;
-    },
-  };
+  authenticated(state) {
+      return state.authenticated;
+  },
+  accountType(state) {
+    return state.accountType;
+  },
+};
