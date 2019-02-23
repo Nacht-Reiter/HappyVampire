@@ -24,6 +24,7 @@ namespace HappyVampire.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllHospitals()
         {
+           
             var hospital = await service.GetAllAsync();
             return hospital == null ? NotFound() as IActionResult : Ok(hospital);
         }
@@ -62,6 +63,35 @@ namespace HappyVampire.Controllers
         public async Task<IActionResult> DeleteHospital(int id)
         {
             var info = await service.DeleteAsync(id);
+            return info ? Ok() : StatusCode(400);
+        }
+
+        // POST: Hospital/patient/5
+        [HttpPost("patient/{id}")]
+        public async Task<IActionResult> AddPatient(int id, [FromBody] PatientDTO patient)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest() as IActionResult;
+            var info = await service.AddPatient(id, patient);
+            return info == null ? StatusCode(400) : Ok();
+        }
+
+        // PUT: Hospital/patient/5
+        [HttpPut("patient/{id}")]
+        public async Task<IActionResult> ChangePatient(int id, [FromBody] PatientDTO patient)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest() as IActionResult;
+
+            var result = await service.UpdatePatient(id, patient);
+            return result == null ? StatusCode(400) : Ok();
+        }
+
+        // DELETE: Hospital/5/patient/5
+        [HttpDelete("{id}/patient/{patientId}")]
+        public async Task<IActionResult> DeletePatient(int id, int patientId)
+        {
+            var info = await service.DeletePatient(id, patientId);
             return info ? Ok() : StatusCode(400);
         }
     }
