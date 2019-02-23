@@ -1,7 +1,9 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router.js";
-import store from './store/store';
+import store from "./store/store";
+import { addInterceptor } from "./axios.js";
+addInterceptor();
 
 Vue.config.productionTip = false;
 
