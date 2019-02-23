@@ -4,6 +4,8 @@
       <img src="../../assets/navbar.png" alt="" width="100%">
     </div>
     <!--<div class="container hospitalRegistration">-->
+    <div>
+    </div>
     <div class="container h-100">
       <h2 class="text-center">Регистрации поликлиники</h2>
       <br>

@@ -4,6 +4,7 @@ import Main from "./views/Main.vue";
 import Patients from "./views/Patients.vue";
 import HospitalRegistration from "./views/Registration/Hospital.vue";
 import DonorRegistration from "./views/Registration/Donor.vue";
+import PatientRegistration from "./views/Registration/Patient.vue";
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ export default new Router({
       path: "/patients",
       name: "Patients",
       component: Patients
+    },
+    {
+      path: "/registerPatient",
+      name: "registerPatient",
+      component: PatientRegistration
     },
     {
       path: "/registerHospital",

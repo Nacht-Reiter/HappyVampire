@@ -1,7 +1,6 @@
 <template>
   <div>
-    <PatientForm></PatientForm>
-    <!-- <div v-if="authenticated">
+    <div v-if="authenticated">
       <div v-if="accountType === 'hospital'">Авторизовано как поликлиника
         <main-hospital></main-hospital>
       </div>
@@ -14,7 +13,7 @@
       <info-headline></info-headline>
       <choose-account-type></choose-account-type>
       <my-footer></my-footer>
-    </div>-->
+    </div>
   </div>
 </template>
 
@@ -22,7 +21,7 @@
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
 import db from "../firebase";
-import PatientForm from "../components/PatientForm.vue";
+// import PatientForm from "../components/PatientForm.vue";
 import Header from "../components/Main/Header";
 import Footer from "../components/Main/Footer";
 import InfoHeadline from "../components/Main/InfoHeadline";
@@ -42,7 +41,6 @@ export default {
     "info-headline": InfoHeadline,
     "main-donor": MainDonor,
     "main-hospital": MainHospital,
-    PatientForm
   },
   methods: {
     ...mapActions(["initState"])
