@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="addPatient">
-            <button class="addPatientBtn">Добавить больного</button>
+            <router-link tag="a" :to="{name: 'registerPatient'}">
+                    <button class="addPatientBtn">Добавить больного</button>
+            </router-link>
         </div>
         <!-- <div class="patientList">
             <button class="patientListBtn">Список больных</button>

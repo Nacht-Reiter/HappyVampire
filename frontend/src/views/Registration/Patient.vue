@@ -34,11 +34,11 @@
       </b-form-group>
       <b-form-group>
         <b-button @click="callImagePicker" variant="primary">Pick an image</b-button>
-        <img v-if="imageIsLoading" src="../assets/giphy.gif">
+        <img v-if="imageIsLoading" src="../../assets/giphy.gif">
         <img v-else-if="picture.url" class="small-image" :src="picture.url">
       </b-form-group>
       <div>
-        <img v-if="formIsLoading" src="../assets/giphy.gif">
+        <img v-if="formIsLoading" src="../../assets/giphy.gif">
         <b-button v-else type="submit" class="mr-2" variant="primary">Submit</b-button>
       </div>
       <b-button type="reset" class="mr-2" variant="danger">Reset</b-button>
