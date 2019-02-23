@@ -5,10 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces - Копировать\**" />
+    <Compile Remove="Services - Копировать\**" />
+    <EmbeddedResource Remove="Interfaces - Копировать\**" />
+    <EmbeddedResource Remove="Services - Копировать\**" />
+    <None Remove="Interfaces - Копировать\**" />
+    <None Remove="Services - Копировать\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HappyVampire.Common\HappyVampire.Common.csproj" />
+    <ProjectReference Include="..\HappyVampire.DataAccess\HappyVampire.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

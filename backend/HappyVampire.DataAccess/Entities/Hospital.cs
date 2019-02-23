@@ -9,6 +9,7 @@ namespace HappyVampire.DataAccess.Entities
     {
         public string Name { get; set; }
         public string Coordinates { get; set; }
+        public string Address { get; set; }
 
         public IEnumerable<Patient> Patients { get; set; }
         public IEnumerable<Donation> Donations { get; set; }

@@ -10,7 +10,6 @@ namespace HappyVampire.DataAccess.Entities
         public string FullName { get; set; }
         public string BloodType { get; set; }
         public string Rating { get; set; }
-        public string Photo { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
