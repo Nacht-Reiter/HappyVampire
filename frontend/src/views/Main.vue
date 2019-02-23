@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="authenticated">
+    <PatientForm></PatientForm>
+    <!-- <div v-if="authenticated">
       <div v-if="accountType === 'hospital'">Авторизовано как поликлиника
         <main-hospital></main-hospital>
       </div>
@@ -13,7 +14,7 @@
       <info-headline></info-headline>
       <choose-account-type></choose-account-type>
       <my-footer></my-footer>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -40,7 +41,8 @@ export default {
     "my-footer": Footer,
     "info-headline": InfoHeadline,
     "main-donor": MainDonor,
-    "main-hospital": MainHospital
+    "main-hospital": MainHospital,
+    PatientForm
   },
   methods: {
     ...mapActions(["initState"])
