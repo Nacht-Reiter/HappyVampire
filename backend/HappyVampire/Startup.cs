@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HappyVampire.BusinessLogic;
+using HappyVampire.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OutlayManager.DataAccess;
 
 namespace HappyVampire
 {
@@ -26,6 +29,10 @@ namespace HappyVampire
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            DataAccessDI.ConfigureServices(services, Configuration);
+            BusinessLogicDI.ConfigureServices(services, Configuration);
+            CommonDI.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +47,9 @@ namespace HappyVampire
                 app.UseHsts();
             }
 
+            DataAccessDI.ConfigureMiddleware(app);
+            BusinessLogicDI.ConfigureMiddleware(app);
+            CommonDI.ConfigureMiddleware(app);
             app.UseMvc();
         }
     }
