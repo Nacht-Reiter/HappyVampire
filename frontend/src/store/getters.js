@@ -5,4 +5,7 @@ export default {
   accountType(state) {
     return state.accountType;
   },
+  patientList(state){
+    return state.patientList;
+  }
 };

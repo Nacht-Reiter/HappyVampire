@@ -12,8 +12,9 @@ export default new Vuex.Store({
   state: {
     // authenticated: false,
     authenticated: true,
-    // accountType: "donor"
-    accountType: "hospital"
+    accountType: "donor",
+    // accountType: "hospital",
+    patientList: [],
   },
   getters,
   mutations,

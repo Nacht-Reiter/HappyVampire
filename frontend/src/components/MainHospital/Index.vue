@@ -3,9 +3,9 @@
         <div class="addPatient">
             <button class="addPatientBtn">Добавить больного</button>
         </div>
-        <div class="patientList">
+        <!-- <div class="patientList">
             <button class="patientListBtn">Список больных</button>
-        </div>
+        </div> -->
         <patient-list></patient-list>
     </div>
 </template>
