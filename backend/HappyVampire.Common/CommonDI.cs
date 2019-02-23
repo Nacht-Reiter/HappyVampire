@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,7 +13,7 @@ namespace HappyVampire.Common
         // Register DI dependencies
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddScoped<IMapper>(sp => AutoMapper.GetDefaultMapper());
         }
 
         public static void ConfigureMiddleware(this IApplicationBuilder app)
