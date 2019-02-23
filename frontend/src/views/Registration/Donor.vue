@@ -1,9 +1,13 @@
 <template>
-  <div class="container donorRegistration">
-    <div class="wrapper">
-      <div>
-        <h2>Страница регистрации донора</h2>
-      </div>
+  <div>
+    <div>
+      <img src="../../assets/navbar.png" alt="" width="100%">
+    </div>
+    <!--<div class="container donorRegistration wrapper">-->
+    <div class="container h-100">
+      <h2 class="text-center">Регистрации донора</h2>
+      <br>
+      <div class="row h-100 justify-content-center align-items-center">
         <form>
           <div class="form-group">
             <label for="exampleInputName">Введите имя</label>
@@ -20,7 +24,9 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
-  </div></template>
+    </div>
+  </div>
+</template>
 
 <script>
 export default {
