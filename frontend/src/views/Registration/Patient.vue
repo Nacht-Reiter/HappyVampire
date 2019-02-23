@@ -57,7 +57,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import db from "../../firebase.js";
+const firebase = db.firebase
 import axios from "axios";
 const bloodTypesList = ["1", "2", "3", "4"];
 const rhesusFactorsList = ["+", "-"];
