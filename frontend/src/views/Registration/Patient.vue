@@ -1,50 +1,58 @@
 <template>
   <div>
-    <b-form @submit.prevent="postPatient">
-      <b-form-group label="Name:" label-for="nameInput">
-        <b-form-input id="nameInput" v-model="name" required placeholder="Enter patient name"/>
-      </b-form-group>
-      <b-form-group label="Diagnosis:" label-for="diagnosisInput">
-        <b-form-input
-          id="diagnosisInput"
-          v-model="diagnosis"
-          required
-          placeholder="Enter patient diagnosis"
-        />
-      </b-form-group>
-      <b-form-group label="Motivation Letter" label-for="motivationLetterText">
-        <b-form-textarea
-          id="motivationLetterText"
-          v-model="motivationLetter"
-          placeholder="Add motivation letter"
-          rows="3"
-          max-rows="6"
-        />
-      </b-form-group>
-      <b-form-group label="Blood type:" label-for="bloodTypeSelect">
-        <b-form-select id="bloodTypeSelect" :options="bloodTypesList" required v-model="bloodType"/>
-      </b-form-group>
-      <b-form-group label="Resus factor:" label-for="resusFactorSelect">
-        <b-form-select
-          id="resusFactorSelect"
-          :options="rhesusFactorsList"
-          required
-          v-model="rhesusFactor"
-        />
-      </b-form-group>
-      <b-form-group>
-        <b-button @click="callImagePicker" variant="primary">Pick an image</b-button>
-        <img v-if="imageIsLoading" src="../../assets/giphy.gif">
-        <img v-else-if="picture.url" class="small-image" :src="picture.url">
-      </b-form-group>
-      <div>
-        <img v-if="formIsLoading" src="../../assets/giphy.gif">
-        <b-button v-else type="submit" class="mr-2" variant="primary">Submit</b-button>
-      </div>
-      <b-button type="reset" class="mr-2" variant="danger">Reset</b-button>
-      <b-button v-if="patientIsAdded" type="reset">Finish with that</b-button>
-      <input type="file" style="display:none" ref="impick" @change="pickImage">
-    </b-form>
+    <div>
+      <img src="../../assets/navbar.png" alt="" width="100%">
+    </div>
+    <h2 class="text-center">Регистрации донора</h2>
+    <br>
+    <div class="row h-100 justify-content-center align-items-center">
+      <b-form @submit.prevent="postPatient">
+        <b-form-group label="Name:" label-for="nameInput">
+          <b-form-input id="nameInput" v-model="name" required placeholder="Enter patient name"/>
+        </b-form-group>
+        <b-form-group label="Diagnosis:" label-for="diagnosisInput">
+          <b-form-input
+            id="diagnosisInput"
+            v-model="diagnosis"
+            required
+            placeholder="Enter patient diagnosis"
+          />
+        </b-form-group>
+        <b-form-group label="Motivation Letter" label-for="motivationLetterText">
+          <b-form-textarea
+            id="motivationLetterText"
+            v-model="motivationLetter"
+            placeholder="Add motivation letter"
+            rows="3"
+            max-rows="6"
+          />
+        </b-form-group>
+        <b-form-group label="Blood type:" label-for="bloodTypeSelect">
+          <b-form-select id="bloodTypeSelect" :options="bloodTypesList" required v-model="bloodType"/>
+        </b-form-group>
+        <b-form-group label="Resus factor:" label-for="resusFactorSelect">
+          <b-form-select
+            id="resusFactorSelect"
+            :options="rhesusFactorsList"
+            required
+            v-model="rhesusFactor"
+          />
+        </b-form-group>
+        <b-form-group>
+          <b-button @click="callImagePicker" variant="primary">Pick an image</b-button>
+          <img v-if="imageIsLoading" src="../../assets/giphy.gif">
+          <img v-else-if="picture.url" class="small-image" :src="picture.url">
+        </b-form-group>
+        <div>
+          <img v-if="formIsLoading" src="../../assets/giphy.gif">
+          <b-button v-else type="submit" class="mr-2" variant="primary">Submit</b-button>
+        </div>
+        <b-button type="reset" class="mr-2" variant="danger">Reset</b-button>
+        <b-button v-if="patientIsAdded" type="reset">Finish with that</b-button>
+        <input type="file" style="display:none" ref="impick" @change="pickImage">
+      </b-form>
+      {{picture.url}}
+    </div>
   </div>
 </template>
 
