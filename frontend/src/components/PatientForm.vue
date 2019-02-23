@@ -22,12 +22,7 @@
         />
       </b-form-group>
       <b-form-group label="Blood type:" label-for="bloodTypeSelect">
-        <b-form-select
-          id="bloodTypeSelect"
-          :options="bloodTypesList"
-          required
-          v-model="bloodTypesList"
-        />
+        <b-form-select id="bloodTypeSelect" :options="bloodTypesList" required v-model="bloodType"/>
       </b-form-group>
       <b-form-group label="Resus factor:" label-for="resusFactorSelect">
         <b-form-select
