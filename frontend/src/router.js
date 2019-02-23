@@ -17,11 +17,6 @@ export default new Router({
       component: Main
     },
     {
-      path: "/",
-      name: "MainHospital",
-      component: HospitalRegistration,
-    },
-    {
       path: "/patients",
       name: "Patients",
       component: Patients
