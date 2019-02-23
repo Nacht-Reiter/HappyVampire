@@ -10,7 +10,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    test: ""
+    // authenticated: false,
+    authenticated: true,
+    accountType: "donor",
+    // accountType: "hospital",
+    patientList: [],
   },
   getters,
   mutations,
