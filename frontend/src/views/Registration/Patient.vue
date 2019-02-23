@@ -40,18 +40,22 @@
         </b-form-group>
         <b-form-group>
           <b-button @click="callImagePicker" variant="primary">Pick an image</b-button>
-          <img v-if="imageIsLoading" src="../../assets/giphy.gif">
-          <img v-else-if="picture.url" class="small-image" :src="picture.url">
+          <div v-if="imageIsLoading">
+            <img src="../../assets/giphy.gif">
+          </div>
+          <div v-else-if="picture.url">
+            <br>
+            <img width="300px" :src="picture.url">
+            <br>
+          </div>
         </b-form-group>
         <div>
           <img v-if="formIsLoading" src="../../assets/giphy.gif">
           <b-button v-else type="submit" class="mr-2" variant="primary">Submit</b-button>
         </div>
-        <b-button type="reset" class="mr-2" variant="danger">Reset</b-button>
         <b-button v-if="patientIsAdded" type="reset">Finish with that</b-button>
         <input type="file" style="display:none" ref="impick" @change="pickImage">
       </b-form>
-      {{picture.url}}
     </div>
   </div>
 </template>
@@ -60,7 +64,7 @@
 import db from "../../firebase.js";
 const firebase = db.firebase
 import axios from "axios";
-const bloodTypesList = ["1", "2", "3", "4"];
+const bloodTypesList = ["I", "II", "III", "IV"];
 const rhesusFactorsList = ["+", "-"];
 export default {
   name: "PatientForm",
