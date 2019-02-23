@@ -11,7 +11,7 @@
           required
           placeholder="Enter patient diagnosis"
         />
-      </b-form-group>
+      </b-form-group><<<<<<< HEAD
       <b-form-group label="Motivation Letter" label-for="motivationLetterText">
         <b-form-textarea
           id="motivationLetterText"
@@ -20,7 +20,8 @@
           rows="3"
           max-rows="6"
         />
-      </b-form-group>
+      </b-form-group>=======
+      >>>>>>> a431257d04ca1c232ad469eb46723ea3b11ecece
       <b-form-group label="Blood type:" label-for="bloodTypeSelect">
         <b-form-select
           id="bloodTypeSelect"
