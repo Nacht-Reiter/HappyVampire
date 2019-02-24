@@ -24,6 +24,12 @@ namespace HappyVampire.BusinessLogic.Services
             this.userService = userService;
         }
 
+        public async Task<UserDTO> CheckUser(string Uid)
+        {
+            var user = (await userService.GetAllAsync()).FirstOrDefault(u => u.Uid == Uid);
+            return user;
+        }
+
         public async Task<DonorDTO> RegisterDonorAsync(string Uid, DonorDTO donor)
         {
             await userService.AddAsync(new UserDTO { Id = 0, Uid = Uid, IsDonor = true });

@@ -10,5 +10,6 @@ namespace HappyVampire.BusinessLogic.Interfaces
     {
         Task<DonorDTO> RegisterDonorAsync(string Uid, DonorDTO donor);
         Task<HospitalDTO> RegisterHospitalAsync(string Uid, HospitalDTO hospital);
+        Task<UserDTO> CheckUser(string Uid);
     }
 }
