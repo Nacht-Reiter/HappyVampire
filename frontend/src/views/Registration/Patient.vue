@@ -169,6 +169,7 @@ export default {
           this.formIsLoading = false;
           this.patientIsAdded = true;
           this.cleanData();
+          // router
           this.$router.push("/");
         })
         .catch(e => {

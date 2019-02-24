@@ -60,12 +60,10 @@ export default {
 </script>
 
 <style>
-.logoutWrapper {
+head .logoutWrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-}
-.logout {
 }
 
 .container {

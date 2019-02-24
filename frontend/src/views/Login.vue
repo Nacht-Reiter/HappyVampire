@@ -59,7 +59,6 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(data => {
-          axios.get("");
           Cookie.set("token", data.user.ra);
           axios
             .get(`http://192.168.32.77:3000/auth/${data.user.uid}`)
