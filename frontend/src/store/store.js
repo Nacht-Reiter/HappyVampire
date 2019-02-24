@@ -9,8 +9,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // authenticated: false,
-    authenticated: true,
+    authenticated: false,
     accountType: "donor",
     // accountType: "hospital",
     hospital: {

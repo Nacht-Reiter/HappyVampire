@@ -69,6 +69,7 @@
 
 <script>
 import firebase from "firebase";
+import { mapMutations } from "vuex";
 import axios from "axios";
 import Cookie from "js-cookie";
 const bloodTypesList = ["I", "II", "III", "IV"];
@@ -100,6 +101,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["SET_AUTHENTICATED", "SET_ACCOUNT_TYPE"]),
     addUserToFirebase() {
       return firebase
         .auth()
@@ -110,7 +112,11 @@ export default {
       axios
         .post("http://192.168.32.77:3000/donor", donor)
         .then(() => Cookie.set("token", donor.token))
-        .then(() => this.$router.push("/"))
+        .then(() => {
+          this.SET_AUTHENTICATED(true);
+          this.SET_ACCOUNT_TYPE("donor");
+          this.$router.push("/");
+        })
         .catch(console.error);
     },
     addUser() {

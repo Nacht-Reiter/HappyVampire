@@ -21,7 +21,6 @@ const addInterceptor = () =>
         headers: {},
         ...config
       };
-      console.log(token);
       newConfig.headers.Authorization = `Bearer ${token}`;
       return newConfig;
     },

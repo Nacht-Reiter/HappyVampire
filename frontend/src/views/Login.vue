@@ -33,6 +33,7 @@
 import firebase from "firebase";
 import axios from "axios";
 import Cookie from "js-cookie";
+import { mapMutations } from "vuex";
 const bloodTypesList = ["I", "II", "III", "IV"];
 const rhesusFactorsList = ["+", "-"];
 export default {
@@ -48,6 +49,7 @@ export default {
   },
   computed: {},
   methods: {
+    ...mapMutations(["SET_AUTHENTICATED"]),
     logIn() {
       firebase
         .auth()
@@ -55,6 +57,7 @@ export default {
         .then(data => {
           console.log(data);
           Cookie.set("token", data.user.ra);
+          this.SET_AUTHENTICATED(true);
           this.$router.push("/");
         })
         .catch(error => {
