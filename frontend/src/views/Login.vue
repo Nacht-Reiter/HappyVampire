@@ -49,7 +49,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapMutations(["SET_AUTHENTICATED"]),
+    ...mapMutations(["SET_AUTHENTICATED", "SET_ACCOUNT_TYPE"]),
     logIn() {
       firebase
         .auth()
@@ -58,6 +58,7 @@ export default {
           console.log(data);
           Cookie.set("token", data.user.ra);
           this.SET_AUTHENTICATED(true);
+          this.SET_ACCOUNT_TYPE("donor"); //TODO:
           this.$router.push("/");
         })
         .catch(error => {

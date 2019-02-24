@@ -10,6 +10,7 @@ const writeTokenFromCookie = token => {
 };
 const removeCookies = () => {
   Cookie.remove("token");
+  Cookie.remove("userStatus");
 };
 
 const loginWithStart = () => {

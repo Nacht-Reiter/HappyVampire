@@ -4,9 +4,10 @@
       <div v-if="accountType === 'hospital'">Авторизовано как поликлиника
         <main-hospital></main-hospital>
       </div>
-      <div v-else>Авторизовано как донор
+      <div v-else-if="accountType === 'donor'">Авторизовано как донор
         <main-donor></main-donor>
       </div>
+      <button v-if="accountType" @click="LOG_OUT">Выйти</button>
     </div>
     <div v-else>НЕ Авторизовано
       <my-header></my-header>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import axios from "axios";
 import db from "../firebase";
 // import PatientForm from "../components/PatientForm.vue";
@@ -43,7 +44,8 @@ export default {
     "main-hospital": MainHospital
   },
   methods: {
-    ...mapActions(["initState"])
+    ...mapActions(["initState"]),
+    ...mapMutations(["LOG_OUT"])
   },
   computed: {
     ...mapGetters(["accountType", "authenticated"])

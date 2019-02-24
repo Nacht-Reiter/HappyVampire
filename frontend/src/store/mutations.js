@@ -1,3 +1,4 @@
+import { removeCookies } from "../axios.js";
 export default {
   INIT_STATE(state) {
     state.test = "123";
@@ -10,5 +11,10 @@ export default {
   },
   SET_ACCOUNT_TYPE(state, status) {
     state.accountType = status;
+  },
+  LOG_OUT(state) {
+    state.accountType = null;
+    state.authenticated = false;
+    removeCookies();
   }
 };
