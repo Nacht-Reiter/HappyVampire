@@ -111,7 +111,10 @@ export default {
     addUserToDb(donor) {
       axios
         .post("http://192.168.32.77:3000/donor", donor)
-        .then(() => Cookie.set("token", donor.token))
+        .then(() => {
+          Cookie.set("token", donor.token);
+          Cookie.set("userStatus", "donor");
+        })
         .then(() => {
           this.SET_AUTHENTICATED(true);
           this.SET_ACCOUNT_TYPE("donor");

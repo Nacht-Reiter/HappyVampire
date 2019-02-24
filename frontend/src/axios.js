@@ -1,5 +1,7 @@
 import axios from "axios";
 import Cookie from "js-cookie";
+import mutations from "./store/mutations";
+import store from "./store/store";
 const getTokenFromCookie = () => {
   return Cookie.get("token");
 };
@@ -8,6 +10,14 @@ const writeTokenFromCookie = token => {
 };
 const removeCookies = () => {
   Cookie.remove("token");
+};
+
+const loginWithStart = () => {
+  const flag = Cookie.get("userStatus");
+  if (flag) {
+    mutations.SET_ACCOUNT_TYPE(store.state, flag);
+    mutations.SET_AUTHENTICATED(store.state, true);
+  }
 };
 
 const addInterceptor = () =>
@@ -31,5 +41,6 @@ export {
   getTokenFromCookie,
   writeTokenFromCookie,
   removeCookies,
-  addInterceptor
+  addInterceptor,
+  loginWithStart
 };

@@ -99,20 +99,18 @@ export default {
       this.$refs.impick.click();
     },
     cleanData() {
-      console.log("clean data");
       this.name = null;
       this.motivationLetter = null;
       this.bloodType = null;
-      (this.rhesusFactor = null),
-        (this.diagnosis = null),
-        (this.picture = {
-          name: null,
-          file: null,
-          url: null
-        });
+      this.rhesusFactor = null;
+      this.diagnosis = null;
+      this.picture = {
+        name: null,
+        file: null,
+        url: null
+      };
       this.imageIsLoading = false;
       this.formIsLoading = false;
-      this.patientIsAdded = false;
     },
     pickImage(event) {
       const images = event.target.files;
@@ -156,20 +154,18 @@ export default {
       const formData = {
         fullName: this.name,
         motivationLetter: this.motivationLetter,
-        bloodType: this.bloodType + this.rhesusFactorsList,
+        bloodType: this.bloodType + this.rhesusFactor,
         diagnosis: this.diagnosis,
         photo: this.picture.url
       };
       axios
         .post("http://192.168.32.77:3000/hospital/patient/1", formData)
         .then(data => {
-          // console.log(data, "data");
           this.formIsLoading = false;
           this.patientIsAdded = true;
           this.cleanData();
         })
         .catch(e => {
-          // console.error(e, "errroe");
           this.formIsLoading = false;
         });
     }

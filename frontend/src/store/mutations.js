@@ -9,6 +9,6 @@ export default {
     state.authenticated = status;
   },
   SET_ACCOUNT_TYPE(state, status) {
-    state.authenticated = status;
+    state.accountType = status;
   }
 };
