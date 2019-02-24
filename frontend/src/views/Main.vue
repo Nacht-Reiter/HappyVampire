@@ -40,7 +40,7 @@ export default {
     "my-footer": Footer,
     "info-headline": InfoHeadline,
     "main-donor": MainDonor,
-    "main-hospital": MainHospital,
+    "main-hospital": MainHospital
   },
   methods: {
     ...mapActions(["initState"])
