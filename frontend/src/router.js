@@ -5,6 +5,7 @@ import Patients from "./views/Patients.vue";
 import HospitalRegistration from "./views/Registration/Hospital.vue";
 import DonorRegistration from "./views/Registration/Donor.vue";
 import PatientRegistration from "./views/Registration/Patient.vue";
+import Login from "./views/Login.vue";
 
 Vue.use(Router);
 
@@ -36,13 +37,18 @@ export default new Router({
       path: "/registerDonor",
       name: "registerDonor",
       component: DonorRegistration
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
     }
   ]
 });
 
 // Router.beforeEach((to, from, next) => {
 //   if (to.matched.some(record => record.meta.requiresLogin) && ???) {
-//       // You can use store variable here to access globalError or commit mutation 
+//       // You can use store variable here to access globalError or commit mutation
 //       next("/Login")
 //   } else {
 //       next()

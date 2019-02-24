@@ -70,6 +70,7 @@
 <script>
 import firebase from "firebase";
 import axios from "axios";
+import Cookie from "js-cookie";
 const bloodTypesList = ["I", "II", "III", "IV"];
 const rhesusFactorsList = ["+", "-"];
 export default {
@@ -106,11 +107,15 @@ export default {
         .catch(console.error);
     },
     addUserToDb(donor) {
-      axios.post("http://192.168.32.77:3000/donor", donor).catch(console.error);
+      axios
+        .post("http://192.168.32.77:3000/donor", donor)
+        .then(() => Cookie.set("token", donor.token))
+        .then(() => this.$router.push("/"))
+        .catch(console.error);
     },
     addUser() {
-      this.addUserToFirebase().then(data =>
-        this.addUserToDb({ ...this.donor, token: data.user.ra })
+      this.addUserToFirebase().then(
+        data => data && this.addUserToDb({ ...this.donor, token: data.user.ra })
       );
     }
   }

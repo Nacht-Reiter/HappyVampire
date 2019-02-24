@@ -14,7 +14,7 @@ const addInterceptor = () =>
   axios.interceptors.request.use(
     config => {
       const token = getTokenFromCookie();
-      if (token) {
+      if (!token) {
         return config;
       }
       const newConfig = {
