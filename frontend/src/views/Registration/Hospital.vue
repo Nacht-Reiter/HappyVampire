@@ -91,21 +91,24 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .catch(console.error);
     },
-    async addHospitalToDb(token) {
+    async addHospitalToDb(token, uid) {
       try {
         const res = await axios.post(
           `http://${this.$store.getters.server.ip}:${
             this.$store.getters.server.port
-          }/hospital`,
+          }/auth/hospital/${uid}`,
           {
-            name: this.name,
-            coordinates: this.coordinates,
-            address: this.address
+            name: this.hospital.name,
+            coordinates: this.hospital.coordinates,
+            address: this.hospital.address
           }
         );
+        console.log(res)
+        // return
         if (res) {
           Cookie.set("token", token);
           Cookie.set("userStatus", "hospital");
+          this.$store.state.hospital.id = res.data.id
           this.SET_AUTHENTICATED(true);
           this.SET_ACCOUNT_TYPE("hospital");
         }
@@ -118,7 +121,7 @@ export default {
 
     addHospital() {
       this.addUserToFirebase().then(
-        data => data && this.addHospitalToDb(data.user.ra)
+        data => data && this.addHospitalToDb(data.user.ra, data.user.uid)
       );
     }
   }
