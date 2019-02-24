@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HappyVampire.Authentication;
 using HappyVampire.BusinessLogic;
 using HappyVampire.Common;
 using Microsoft.AspNetCore.Builder;
@@ -43,7 +44,8 @@ namespace HappyVampire
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(
                     options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                    ); ;
+                    );
+            services.AddFirebaseAuthentication(Configuration.GetValue<string>("Firebase:ProjectId"));
 
             DataAccessDI.ConfigureServices(services, Configuration);
             BusinessLogicDI.ConfigureServices(services, Configuration);
@@ -66,6 +68,7 @@ namespace HappyVampire
             DataAccessDI.ConfigureMiddleware(app);
             BusinessLogicDI.ConfigureMiddleware(app);
             CommonDI.ConfigureMiddleware(app);
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
