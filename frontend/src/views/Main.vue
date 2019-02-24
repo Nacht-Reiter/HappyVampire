@@ -8,7 +8,9 @@
       <div v-else-if="accountType === 'donor'">Авторизовано как донор
         <main-donor></main-donor>
       </div>
-      <button v-if="accountType" @click="LOG_OUT">Выйти</button>
+      <div class="logoutWrapper">
+          <b-button v-if="accountType" @click="LOG_OUT" class="logout" variant="outline-danger btn-lg ">Выйти</b-button>
+      </div>
     </div>
     <div v-else>
       <!-- НЕ Авторизовано -->
@@ -36,7 +38,7 @@ import MainHospital from "../components/MainHospital/Index";
 export default {
   name: "Main",
   created() {
-    this.initState();
+    // this.initState();
   },
   components: {
     "my-header": Header,
@@ -57,6 +59,21 @@ export default {
 </script>
 
 <style>
+
+.logoutWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.logout{
+  
+}
+
+
+
+
+
+
 .container {
   max-width: 960px;
 }
@@ -133,7 +150,8 @@ export default {
   overflow: hidden;
 }
 
-.bg-light {
+.bg-lightt {
+  /* background-color: #ffffff !important; */
   background-color: #ffffff !important;
 }
 

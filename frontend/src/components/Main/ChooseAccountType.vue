@@ -10,14 +10,14 @@
       <router-link :to="{name: 'registerDonor'}">
 
       <a href="#">
-        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 440px; border-radius: 21px 21px 0 0;">
+        <div class="bg-light-2 bg-light shadow-sm mx-auto" style="width: 80%; height: 440px; border-radius: 21px 21px 0 0;">
           <img src="../../assets/donor.jpg" width="300" alt="donor_picture">
         </div>
       </a>
       </router-link>
 
     </div>
-    <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class=" mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">Клиника</h2>
         <p class="lead">Если вам требуется донорская помощь.</p>
@@ -41,3 +41,9 @@ export default {
     name: "chooseAccountType"
 }
 </script>
+
+<style>
+.bg-light-2{
+  background: #fff  
+}
+</style>

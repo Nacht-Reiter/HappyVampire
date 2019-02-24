@@ -9,7 +9,15 @@
     <main role="main" class="container">
 
 
-
+        <div class="addPatient">
+            <router-link  :to="{name: 'registerPatient'}">
+                    <!-- <button class="addPatientBtn">Добавить больного</button> -->
+                <!-- <div class="addPatientBtnWrapper"> -->
+                    <b-button @click="LOG_OUT" class="addPatientBtn" variant="outline-primary btn-lg ">Добавить больного</b-button>
+                <!-- </div> -->
+            </router-link>
+        </div>
+      <br>
       <div class="card mb-3" v-for="patient in patientList" :key="patient.id">
         <!-- {{ patient }} -->
         <div class="row no-gutters">

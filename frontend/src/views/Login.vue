@@ -56,6 +56,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then(data => {
           console.log(data);
+          axios.get('')
           Cookie.set("token", data.user.ra);
           this.SET_AUTHENTICATED(true);
           this.SET_ACCOUNT_TYPE("donor"); //TODO:

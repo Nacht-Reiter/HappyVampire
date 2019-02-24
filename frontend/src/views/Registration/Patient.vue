@@ -3,7 +3,7 @@
     <div>
       <img src="../../assets/navbar.png" alt width="100%">
     </div>
-    <h2 class="text-center">Регистрации донора</h2>
+    <h2 class="text-center">Регистрации больного</h2>
     <br>
     <div class="row h-100 justify-content-center align-items-center">
       <b-form @submit.prevent="postPatient">
@@ -159,11 +159,13 @@ export default {
         photo: this.picture.url
       };
       axios
-        .post("http://192.168.32.77:3000/hospital/patient/1", formData)
+        .post(`http://${this.$store.state.server.ip}:${this.$store.state.server.port}/hospital/patient/${this.$store.state.hospital.id}`, formData)
         .then(data => {
           this.formIsLoading = false;
           this.patientIsAdded = true;
           this.cleanData();
+          // router
+          this.$router.push("/");
         })
         .catch(e => {
           this.formIsLoading = false;

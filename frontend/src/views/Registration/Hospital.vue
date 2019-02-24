@@ -113,6 +113,7 @@ export default {
           Cookie.set("token", token);
           Cookie.set("userStatus", "hospital");
           this.$store.state.hospital.id = res.data.id
+          
           this.SET_AUTHENTICATED(true);
           this.SET_ACCOUNT_TYPE("hospital");
         }
