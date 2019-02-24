@@ -28,7 +28,22 @@ namespace HappyVampire
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(
+                    options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    ); ;
 
             DataAccessDI.ConfigureServices(services, Configuration);
             BusinessLogicDI.ConfigureServices(services, Configuration);
@@ -46,6 +61,7 @@ namespace HappyVampire
             {
                 app.UseHsts();
             }
+            app.UseCors("AllowAll");
 
             DataAccessDI.ConfigureMiddleware(app);
             BusinessLogicDI.ConfigureMiddleware(app);
