@@ -29,6 +29,14 @@ namespace HappyVampire.Controllers
             return info == null ? StatusCode(400) :  Ok(info) as IActionResult;
         }
 
+        // Get: auth/{Uid}
+        [HttpGet("{Uid}")]
+        public async Task<IActionResult> CheckUser(string Uid)
+        {
+            var info = await service.CheckUser(Uid);
+            return info == null ? StatusCode(400) : Ok(info) as IActionResult;
+        }
+
         // POST: Hospital/5
         [HttpPost("hospital/{Uid}")]
         public async Task<IActionResult> RegisterHospital(string Uid, [FromBody] HospitalDTO hospital)
