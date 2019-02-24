@@ -19,6 +19,7 @@ namespace HappyVampire.BusinessLogic
             services.AddTransient<IHospitalService, HospitalService>();
             services.AddTransient<IDonationService, DonationService>();
             services.AddTransient<IDonorService, DonorService>();
+            services.AddTransient<IAuthService, AuthService>();
         }
 
         public static void ConfigureMiddleware(this IApplicationBuilder app)
