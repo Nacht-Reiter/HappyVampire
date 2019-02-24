@@ -24,9 +24,14 @@
               <p class="card-text text-left"><span class="bold">Группа крови: </span>{{patient.bloodType}}</p>
               <div class="help-btn float-right align-bottom">
                 <!-- <router-link :to="{name: 'helpPatient'}"> -->
-                <a href="#" class="btn btn-primary">Помочь</a>
+                <!-- <a href="#" class="btn btn-primary">Помочь</a> -->
+                <b-button @click="showModal(patient.hospital)">Помочь</b-button>
+
                 <!-- </router-link> -->
               </div>
+
+
+
             </div>
           </div>
         </div>
@@ -35,6 +40,25 @@
 
     </main>
   </div>
+
+
+
+    <!--  -->
+    <div>
+          <b-modal ref="myModalRef" hide-footer title="Информация о поликлинике">
+        <div class="d-block text-center">
+          <h4> Адрес: {{ hospital.address }}</h4>
+          <h4> Координаты: {{ hospital.coordinates }}</h4>
+        </div>
+        <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
+      </b-modal>
+    </div>
+
+
+
+
+
+
     </div>
 </template>
 
@@ -44,6 +68,13 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: "patientList",
+    data: function() {
+        return {
+          help: true,
+          hospital: {id: 0, coordinates: "0", address: "0"}
+        };
+    },
+    
     computed: {
       ...mapGetters(['patientList'])
     },
@@ -51,7 +82,20 @@ export default {
       this.setPatientList()
     },
     methods: {
-      ...mapActions(['setPatientList'])
+      ...mapActions(['setPatientList']),
+      showModal(hospital) {
+        this.hospital = hospital
+        // console.log(hospital)
+        // console.log(this.hospital)
+        this.$refs.myModalRef.show()
+      },
+      hideModal() {
+        this.$refs.myModalRef.hide()
+      },
+      toggleHelp(){
+        this.help = !this.help  
+      },
+    
     }
 
 }

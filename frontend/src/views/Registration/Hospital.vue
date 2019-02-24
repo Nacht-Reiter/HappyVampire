@@ -61,6 +61,10 @@
         </form>
       </div>
     </div>
+
+
+
+
   </div>
 </template>
 
@@ -80,7 +84,7 @@ export default {
         name: "",
         coordinates: "",
         address: ""
-      }
+      },
     };
   },
   methods: {

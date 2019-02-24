@@ -11,6 +11,8 @@
     <div v-else>НЕ Авторизовано
       <my-header></my-header>
       <info-headline></info-headline>
+
+      
       <choose-account-type></choose-account-type>
       <my-footer></my-footer>
     </div>
