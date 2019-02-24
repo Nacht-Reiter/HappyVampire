@@ -1,14 +1,17 @@
 <template>
   <div>
     <div v-if="authenticated">
-      <div v-if="accountType === 'hospital'">Авторизовано как поликлиника
+      <div v-if="accountType === 'hospital'">
+        <!-- Авторизовано как поликлиника -->
         <main-hospital></main-hospital>
       </div>
-      <div v-else>Авторизовано как донор
+      <div v-else>
+        <!-- Авторизовано как донор -->
         <main-donor></main-donor>
       </div>
     </div>
-    <div v-else>НЕ Авторизовано
+    <div v-else>
+      <!-- НЕ Авторизовано -->
       <my-header></my-header>
       <info-headline></info-headline>
 
