@@ -69,10 +69,8 @@
 
 <script>
 import firebase from "firebase";
-import { mapMutations } from "vuex";
 import axios from "axios";
-import Cookie from "js-cookie";
-const bloodTypesList = ["I", "II", "III", "IV"];
+const bloodTypesList = ["1", "2", "3", "4"];
 const rhesusFactorsList = ["+", "-"];
 export default {
   name: "Registration",
@@ -101,7 +99,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["SET_AUTHENTICATED", "SET_ACCOUNT_TYPE"]),
     addUserToFirebase() {
       return firebase
         .auth()
@@ -123,8 +120,8 @@ export default {
         .catch(console.error);
     },
     addUser() {
-      this.addUserToFirebase().then(
-        data => data && this.addUserToDb({ ...this.donor, token: data.user.ra })
+      this.addUserToFirebase().then(data =>
+        this.addUserToDb({ ...this.donor, token: data.user.ra })
       );
     }
   }
