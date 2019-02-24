@@ -1,7 +1,8 @@
 <template>
   <div>
     <div v-if="authenticated">
-      <div v-if="accountType === 'hospital'">Авторизовано как поликлиника
+      <div v-if="accountType === 'hospital'">
+        <!-- Авторизовано как поликлиника -->
         <main-hospital></main-hospital>
       </div>
       <div v-else-if="accountType === 'donor'">Авторизовано как донор
@@ -9,9 +10,11 @@
       </div>
       <button v-if="accountType" @click="LOG_OUT">Выйти</button>
     </div>
-    <div v-else>НЕ Авторизовано
+    <div v-else>
+      <!-- НЕ Авторизовано -->
       <my-header></my-header>
       <info-headline></info-headline>
+
       <choose-account-type></choose-account-type>
       <my-footer></my-footer>
     </div>

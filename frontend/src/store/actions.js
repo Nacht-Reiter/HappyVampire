@@ -10,6 +10,7 @@ export default {
         const patientsReq = await axios.get(`http://${state.server.ip}:${state.server.port}/patient`)
         const patientListRaw = patientsReq.data
         const patientList = filterPatientsByField(patientListRaw, 'bloodType', state.patient.bloodType)
+        console.log(patientList)
         commit('SET_PATIENT_LIST', patientList);
       } else {
 

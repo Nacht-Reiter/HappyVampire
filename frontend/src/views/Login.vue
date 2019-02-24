@@ -4,7 +4,7 @@
       <img src="../assets/navbar.png" alt width="100%">
     </div>
     <div class="container h-100">
-      <h2 class="text-center">Логинизация</h2>
+      <h2 class="text-center">Вход</h2>
       <br>
       <div class="row h-100 justify-content-center align-items-center">
         <form @submit.prevent="logIn">

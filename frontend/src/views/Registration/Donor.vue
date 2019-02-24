@@ -64,6 +64,13 @@
         </form>
       </div>
     </div>
+
+
+
+
+
+
+
   </div>
 </template>
 
@@ -86,7 +93,7 @@ export default {
       phone: null,
       imageIsLoading: false,
       formIsLoading: false,
-      patientIsAdded: false
+      patientIsAdded: false,
     };
   },
   computed: {
