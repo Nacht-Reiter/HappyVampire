@@ -8,8 +8,7 @@ namespace HappyVampire.Common.DTOs
     {
         public string FullName { get; set; }
         public string BloodType { get; set; }
-        public string Rating { get; set; }
-        public string Photo { get; set; }
+        public int Rating { get; set; }
 
         public UserDTO User { get; set; }
 

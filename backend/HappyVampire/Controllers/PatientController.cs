@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HappyVampire.BusinessLogic.Interfaces;
 using HappyVampire.Common.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace HappyVampire.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class PatientController : ControllerBase
     {
         private readonly IPatientService service;
