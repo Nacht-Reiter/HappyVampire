@@ -11,8 +11,8 @@ namespace HappyVampire.DataAccess.Entities
         public string Coordinates { get; set; }
         public string Address { get; set; }
 
-        public IEnumerable<Patient> Patients { get; set; }
-        public IEnumerable<Donation> Donations { get; set; }
+        public virtual List<Patient> Patients { get; set; }
+        public virtual IEnumerable<Donation> Donations { get; set; }
 
 
         [ForeignKey("UserId")]

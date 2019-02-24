@@ -70,7 +70,7 @@
 <script>
 import firebase from "firebase";
 import axios from "axios";
-const bloodTypesList = ["1", "2", "3", "4"];
+const bloodTypesList = ["I", "II", "III", "IV"];
 const rhesusFactorsList = ["+", "-"];
 export default {
   name: "Registration",
