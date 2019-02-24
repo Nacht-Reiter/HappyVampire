@@ -1,25 +1,64 @@
 <template>
   <div>
     <div>
-      <img src="../../assets/navbar.png" alt="" width="100%">
+      <img src="../../assets/navbar.png" alt width="100%">
     </div>
-    <!--<div class="container donorRegistration wrapper">-->
     <div class="container h-100">
       <h2 class="text-center">Регистрации донора</h2>
       <br>
       <div class="row h-100 justify-content-center align-items-center">
-        <form>
+        <form @submit.prevent="addUser">
           <div class="form-group">
             <label for="exampleInputName">Введите имя</label>
-            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Введите имя">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              v-model="name"
+              aria-describedby="name"
+              placeholder="Введите имя"
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName">Введите пароль</label>
+            <input
+              type="password"
+              v-model="password"
+              class="form-control"
+              id="password"
+              placeholder="Введите пароль"
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName">Введите email</label>
+            <input type="email" class="form-control" v-model="email" placeholder="Введите email">
           </div>
           <div class="form-group">
             <label for="exampleInputBloodtype">Введите тип крови</label>
-            <input type="text" class="form-control" id="bloodtype" aria-describedby="bloodtype" placeholder="Введите тип крови">
+            <b-form-select
+              id="resusFactorSelect"
+              :options="bloodTypesList"
+              required
+              v-model="bloodType"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputBloodtype">Введите резус-фактор</label>
+            <b-form-select
+              id="resusFactorSelect"
+              :options="rhesusFactorsList"
+              required
+              v-model="rhesusFactor"
+            />
           </div>
           <div class="form-group">
             <label for="exampleInputTelephone">Введите номер телефона</label>
-            <input type="text" class="form-control" id="telephone" aria-describedby="telephone" placeholder="Введите номер телефона">
+            <input
+              type="text"
+              class="form-control"
+              v-model="phone"
+              placeholder="Введите номер телефона"
+            >
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -29,8 +68,52 @@
 </template>
 
 <script>
+import firebase from "firebase";
+import axios from "axios";
+const bloodTypesList = ["1", "2", "3", "4"];
+const rhesusFactorsList = ["+", "-"];
 export default {
-  name: "Registration"
+  name: "Registration",
+  data() {
+    return {
+      name: null,
+      bloodType: null,
+      rhesusFactor: null,
+      password: null,
+      email: null,
+      phone: null,
+      imageIsLoading: false,
+      formIsLoading: false,
+      patientIsAdded: false
+    };
+  },
+  computed: {
+    bloodTypesList: () => bloodTypesList,
+    rhesusFactorsList: () => rhesusFactorsList,
+    donor() {
+      return {
+        fullName: this.name,
+        bloodType: this.bloodType + this.rhesusFactor,
+        rating: 0
+      };
+    }
+  },
+  methods: {
+    addUserToFirebase() {
+      return firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .catch(console.error);
+    },
+    addUserToDb(donor) {
+      axios.post("http://192.168.32.77:3000/donor", donor).catch(console.error);
+    },
+    addUser() {
+      this.addUserToFirebase().then(data =>
+        this.addUserToDb({ ...this.donor, token: data.user.ra })
+      );
+    }
+  }
 };
 </script>
 

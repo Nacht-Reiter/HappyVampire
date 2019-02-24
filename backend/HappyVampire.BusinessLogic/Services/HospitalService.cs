@@ -48,9 +48,14 @@ namespace HappyVampire.BusinessLogic.Services
                     return false;
                 }
                 var target = hospital.Patients.FirstOrDefault(s => s.Id == patientId);
+                if(target == null)
+                {
+                    return false;
+                }
                 hospital.Patients.Remove(mapper.Map<Patient>(target));
                 var result = await uow.Repository<Hospital>().Update(hospital);
-                if (result != null)
+                var info = await uow.Repository<Patient>().DeleteAsync(target.Id);
+                if (result != null && info != null)
                 {
                     await uow.SaveAsync();
                     return true;
