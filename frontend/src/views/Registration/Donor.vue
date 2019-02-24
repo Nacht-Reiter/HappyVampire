@@ -60,17 +60,10 @@
               placeholder="Введите номер телефона"
             >
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Отправить</button>
         </form>
       </div>
     </div>
-
-
-
-
-
-
-
   </div>
 </template>
 
@@ -79,7 +72,7 @@ import firebase from "firebase";
 import axios from "axios";
 import Cookie from "js-cookie";
 import { mapMutations } from "vuex";
-const bloodTypesList = ["1", "2", "3", "4"];
+const bloodTypesList = ["I", "II", "III", "IV"];
 const rhesusFactorsList = ["+", "-"];
 export default {
   name: "Registration",
@@ -93,7 +86,7 @@ export default {
       phone: null,
       imageIsLoading: false,
       formIsLoading: false,
-      patientIsAdded: false,
+      patientIsAdded: false
     };
   },
   computed: {
@@ -116,11 +109,17 @@ export default {
         .catch(console.error);
     },
     addUserToDb(donor) {
+      const formData = {
+        bloodType: donor.bloodType,
+        fullName: donor.fullName,
+        rating: 0
+      };
       axios
-        .post("http://192.168.32.77:3000/donor", donor)
+        .post(`http://192.168.32.77:3000/auth/donor/${donor.uid}`, formData)
         .then(() => {
           Cookie.set("token", donor.token);
           Cookie.set("userStatus", "donor");
+          Cookie.set("bloodType", donor.bloodType);
         })
         .then(() => {
           this.SET_AUTHENTICATED(true);
@@ -131,7 +130,13 @@ export default {
     },
     addUser() {
       this.addUserToFirebase().then(
-        data => data && this.addUserToDb({ ...this.donor, token: data.user.ra })
+        data =>
+          data &&
+          this.addUserToDb({
+            ...this.donor,
+            token: data.user.ra,
+            uid: data.user.uid
+          })
       );
     }
   }

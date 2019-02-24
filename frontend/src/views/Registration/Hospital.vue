@@ -57,14 +57,10 @@
               placeholder="Введите адрес"
             >
           </div>
-          <button type="submit" class="btn btn-primary" @click.prevent="addHospital">Submit</button>
+          <button type="submit" class="btn btn-primary" @click.prevent="addHospital">Отправить</button>
         </form>
       </div>
     </div>
-
-
-
-
   </div>
 </template>
 
@@ -84,7 +80,7 @@ export default {
         name: "",
         coordinates: "",
         address: ""
-      },
+      }
     };
   },
   methods: {
@@ -107,12 +103,13 @@ export default {
             address: this.hospital.address
           }
         );
-        console.log(res)
+        console.log(res);
         // return
         if (res) {
           Cookie.set("token", token);
           Cookie.set("userStatus", "hospital");
-          this.$store.state.hospital.id = res.data.id
+          this.$store.state.hospital.id = res.data.id;
+
           this.SET_AUTHENTICATED(true);
           this.SET_ACCOUNT_TYPE("hospital");
         }

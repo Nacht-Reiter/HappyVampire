@@ -16,5 +16,8 @@ export default {
     state.accountType = null;
     state.authenticated = false;
     removeCookies();
+  },
+  SET_BLOOD_TYPE(state, bloodType) {
+    state.donor.bloodType = bloodType;
   }
 };

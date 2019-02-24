@@ -3,7 +3,7 @@
     <div>
       <img src="../../assets/navbar.png" alt width="100%">
     </div>
-    <h2 class="text-center">Регистрации донора</h2>
+    <h2 class="text-center">Регистрация больного</h2>
     <br>
     <div class="row h-100 justify-content-center align-items-center">
       <b-form @submit.prevent="postPatient">
@@ -44,7 +44,7 @@
           />
         </b-form-group>
         <b-form-group>
-          <b-button @click="callImagePicker" variant="primary">Pick an image</b-button>
+          <b-button @click="callImagePicker" variant="primary">Добавить фото</b-button>
           <div v-if="imageIsLoading">
             <img src="../../assets/giphy.gif">
           </div>
@@ -56,9 +56,9 @@
         </b-form-group>
         <div>
           <img v-if="formIsLoading" src="../../assets/giphy.gif">
-          <b-button v-else type="submit" class="mr-2" variant="primary">Submit</b-button>
+          <b-button v-else type="submit" class="mr-2" variant="primary">Добавить</b-button>
         </div>
-        <b-button v-if="patientIsAdded" type="reset">Finish with that</b-button>
+        <b-button v-if="patientIsAdded" @click="$router.push('/')" type="reset">Закончить</b-button>
         <input type="file" style="display:none" ref="impick" @change="pickImage">
       </b-form>
     </div>
@@ -159,11 +159,17 @@ export default {
         photo: this.picture.url
       };
       axios
-        .post("http://192.168.32.77:3000/hospital/patient/1", formData)
+        .post(
+          `http://${this.$store.state.server.ip}:${
+            this.$store.state.server.port
+          }/hospital/patient/${this.$store.state.hospital.id}`,
+          formData
+        )
         .then(data => {
           this.formIsLoading = false;
           this.patientIsAdded = true;
           this.cleanData();
+          this.$router.push("/");
         })
         .catch(e => {
           this.formIsLoading = false;

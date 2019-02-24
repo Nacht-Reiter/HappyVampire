@@ -1,10 +1,5 @@
 <template>
     <div>
-        <div class="addPatient">
-            <router-link tag="a" :to="{name: 'registerPatient'}">
-                    <button class="addPatientBtn">Добавить больного</button>
-            </router-link>
-        </div>
         <!-- <div class="patientList">
             <button class="patientListBtn">Список больных</button>
         </div> -->
@@ -24,5 +19,16 @@ export default {
 </script>
 
 <style>
+.addPatientBtnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.addPatientBtn{
+  
+}
+
+
 
 </style>

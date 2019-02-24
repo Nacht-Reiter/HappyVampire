@@ -15,9 +15,11 @@ const removeCookies = () => {
 
 const loginWithStart = () => {
   const flag = Cookie.get("userStatus");
+  const bloodType = Cookie.get("bloodType");
   if (flag) {
     mutations.SET_ACCOUNT_TYPE(store.state, flag);
     mutations.SET_AUTHENTICATED(store.state, true);
+    mutations.SET_BLOOD_TYPE(store.state, bloodType);
   }
 };
 

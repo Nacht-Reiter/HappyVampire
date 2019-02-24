@@ -15,11 +15,11 @@ export default new Vuex.Store({
       id: 1
     },
     donor: {
-      id: 1
+      id: 1,
+      bloodType: "II+"
     },
     patient: {
-      id: null,
-      bloodType: "I+"
+      id: null
     },
     patientList: [],
     server: {

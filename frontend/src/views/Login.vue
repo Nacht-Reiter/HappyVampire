@@ -22,7 +22,7 @@
             <label for="exampleInputName">Введите email</label>
             <input type="email" class="form-control" v-model="email" placeholder="Введите email">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Войти</button>
         </form>
       </div>
     </div>
@@ -49,17 +49,29 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapMutations(["SET_AUTHENTICATED", "SET_ACCOUNT_TYPE"]),
+    ...mapMutations([
+      "SET_AUTHENTICATED",
+      "SET_ACCOUNT_TYPE",
+      "SET_BLOOD_TYPE"
+    ]),
     logIn() {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(data => {
-          console.log(data);
+          axios.get("");
           Cookie.set("token", data.user.ra);
-          this.SET_AUTHENTICATED(true);
-          this.SET_ACCOUNT_TYPE("donor"); //TODO:
-          this.$router.push("/");
+          axios
+            .get(`http://192.168.32.77:3000/auth/${data.user.uid}`)
+            .then(({ data }) => {
+              this.SET_AUTHENTICATED(true);
+              if (data.isDonor) {
+                this.SET_ACCOUNT_TYPE("donor");
+              } else {
+                this.SET_ACCOUNT_TYPE("hospital");
+              }
+              this.$router.push("/");
+            });
         })
         .catch(error => {
           console.log(error);
