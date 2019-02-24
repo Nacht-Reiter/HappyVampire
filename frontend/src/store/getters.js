@@ -7,5 +7,8 @@ export default {
   },
   patientList(state){
     return state.patientList;
+  },
+  server(state){
+    return state.server;
   }
 };
